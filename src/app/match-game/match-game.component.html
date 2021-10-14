@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row p-3">
+        <div class="col-lg-12 col-12">
+            <h1 class="text-center">Match game</h1>
+            <h2>Score:{{score}}</h2>
+            <table class="text-center">
+                <ng-container *ngFor="let row of grid; let i = index">
+                    <tr class="d-inline-flex card">
+                        <ng-container *ngFor="let col of row; let j = index">
+                            <td>
+                                <div [ngClass]="{'bg-success': flipped[i][j]==true, 'bg-primary':flipped[i][j]==false,
+                                'disabled': matches[i][j]==true }">
+                                    <button class="btn card-body" (click)="flipCard(i, j)">
+                                        <h3 [ngClass]="{'disabled': flipped[i][j]==false }">{{col}}</h3>
+                                    </button>
+                                </div>
+                            </td>
+                        </ng-container>
+                    </tr>
+                </ng-container>
+            </table>
+            <form class="p-3">
+                <label class="form-label">Grid size : {{gridSize}}</label>
+                <input id = "gSize" #gSize type="number" class="form-control" min="4" max="12">
+                <button class="btn btn-primary" (click)="setGridSize()">
+                    Set grid size
+                </button>
+            </form>
+            <button class="btn btn-success" (click)="createMatrix()">
+                Start Game
+            </button>
+        </div>
+    </div>
+</div>

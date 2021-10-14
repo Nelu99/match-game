@@ -1,0 +1,4 @@
+.disabled {
+    visibility: hidden;
+    cursor: default;
+   }
